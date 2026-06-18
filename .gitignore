@@ -1,34 +1,39 @@
-# Python
+# Python bytecode and caches
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 .mypy_cache/
+.coverage
+htmlcov/
 
 # Virtual environments
 .venv/
 venv/
 env/
 
-# Build / dist junk
+# Build and packaging output
 build/
+dist/
 *.spec
+*.zip
 
-# PDF-build intermediates (the committed artifacts are the .pdf files)
+# Generated report files
 report/*.html
+report/*.pdf
 
-# OS / editor / tooling
+# Operating system and editor files
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 .claude/
 
-# Project-local scratch / source material (not for the public repo)
+# Local source material and scratch files
 _brief_extracted.txt
-ketentuan.pdf
+ketentuan*.pdf
 README FP PAA.md
 
-# Keep benchmark results and plots in the repo so the TA can see them:
+# Keep reproducible benchmark artifacts in the repository
 !bench/results.csv
 !bench/*.png
