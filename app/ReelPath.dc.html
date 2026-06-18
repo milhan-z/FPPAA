@@ -9,15 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#141311; --panel-bg:#1b1917; --card-bg:#221f1c;
-    --text:#f5f4f2; --sub-text:#a39d97;
-    --border:#2e2b27;
-    --warm:#ff6a52; --warm-soft:#2c1713; --warm-border:#6e2f24;
-    --edge:#453f3a; --bar-muted:#403a34;
-    --grid-line:#272420; --hatch:rgba(168,162,158,.3);
-    --chip-bg:#2a2723;
-  }
-  body.light {
     --bg:#f3f2ef; --panel-bg:#ffffff; --card-bg:#ffffff;
     --text:#1c1917; --sub-text:#79716b;
     --border:#e7e5e1;
@@ -38,7 +29,7 @@
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 </style>
 </head>
-<body>
+<body class="light">
 
 <div style="height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow:hidden;">
 
@@ -71,11 +62,6 @@
       <button id="btn-whatif" onclick="setMode('whatif')" style="border:none;cursor:pointer;font-size:13px;font-weight:600;padding:6px 17px;border-radius:6px;background:transparent;color:var(--sub-text);transition:background .15s,color .15s;">What-if</button>
     </div>
 
-    <!-- Dark / Light toggle -->
-    <button onclick="toggleDark()" style="display:flex;align-items:center;gap:7px;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:12.5px;color:var(--text);padding:7px 12px;border-radius:8px;">
-      <span id="dark-dot" style="width:13px;height:13px;border-radius:50%;border:1.5px solid var(--sub-text);background:var(--warm);"></span>
-      <span id="dark-label">Light</span>
-    </button>
   </div>
 
   <!-- ═══ MAIN ═══ -->
@@ -151,7 +137,7 @@
    ═══════════════════════════════════════════════════════════ */
 
 // ─── State ───────────────────────────────────────────────
-const APP = { tasks: [], deps: [], origDur: {}, mode: 'view', dark: true };
+const APP = { tasks: [], deps: [], origDur: {}, mode: 'view' };
 let dagNaturalW = 0, dagNaturalH = 0;
 let solveTimer = null;
 
@@ -204,12 +190,6 @@ function setMode(m) {
   requestAnimationFrame(scaleDag);
 }
 
-function toggleDark() {
-  APP.dark = !APP.dark;
-  document.body.classList.toggle('light', !APP.dark);
-  document.getElementById('dark-label').textContent = APP.dark ? 'Light' : 'Dark';
-  document.getElementById('dark-dot').style.background = APP.dark ? 'var(--warm)' : 'transparent';
-}
 
 function resetDurations() {
   for (const t of APP.tasks) t.duration = APP.origDur[t.id];
