@@ -17,11 +17,12 @@ build/
 # PDF-build intermediates (the committed artifacts are the .pdf files)
 report/*.html
 
-# OS / editor
+# OS / editor / tooling
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
+.claude/
 
 # Project-local scratch / source material (not for the public repo)
 _brief_extracted.txt
