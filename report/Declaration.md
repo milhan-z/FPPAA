@@ -1,16 +1,16 @@
 # Academic Integrity Declaration
 
-**Course:** EF234405 — Design & Analysis of Algorithms
-**Assessment:** Final Exam (Group Capstone Project) — *“Design It, Prove It, Build It, Measure It”*
-**Project:** ReelPath — Critical-Path Analyzer for Video Production Schedules
+**Course:** EF234405 - Design & Analysis of Algorithms
+**Assessment:** Final Exam (Group Capstone Project) - *“Design It, Prove It, Build It, Measure It”*
+**Project:** ReelPath - Critical-Path Analyzer for Video Production Schedules
 **Public repository:** https://github.com/milhan-z/draftpaa
 
 ---
 
 ## Pledge
 
-We, the undersigned, declare that this submission — the report, the source code in
-the repository linked above, and all accompanying materials — is our own original
+We, the undersigned, declare that this submission - the report, the source code in
+the repository linked above, and all accompanying materials - is our own original
 work. We pledge that:
 
 - We did not plagiarise any part of this work from another person, group, book,
@@ -29,7 +29,7 @@ work. We pledge that:
 > exact text in the official exam brief (`ketentuan.pdf`, §5 *Plagiarism & Academic
 > Honesty Policy*) and replace it with the official wording if it differs. The
 > signature may be handwritten or digital, but it **must** be added by each member
-> personally — do not type a name in place of a signature.
+> personally - do not type a name in place of a signature.
 
 ---
 
@@ -78,9 +78,9 @@ reflect your real team composition before submitting.)*
 
 | Member | % | Role / Contribution |
 |---|---|---|
-| _[Full Name — Student ID]_ | 100% | Model & architecture; both algorithms (core + baseline); proof & complexity analysis; demo; benchmark harness; report. |
+| _[Full Name - Student ID]_ | 100% | Model & architecture; both algorithms (core + baseline); proof & complexity analysis; demo; benchmark harness; report. |
 
 > If submitting as a team of two or three, split the percentage and roles honestly
 > (they must sum to 100%). Example from the brief:
-> *Indah — 34%: model + core algorithm + proof; Turangga — 33%: baseline + demo +
-> benchmark; Muliawati — 33%: complexity analysis, evaluation, plots, report.*
+> *Indah - 34%: model + core algorithm + proof; Turangga - 33%: baseline + demo +
+> benchmark; Muliawati - 33%: complexity analysis, evaluation, plots, report.*

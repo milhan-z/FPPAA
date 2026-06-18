@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ReelPath — Critical-Path Analyzer</title>
+<title>ReelPath - Critical-Path Analyzer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -85,7 +85,7 @@
       <div id="whatif-panel" style="display:none;border-top:1px solid var(--border);background:var(--panel-bg);padding:12px 16px 14px;max-height:230px;overflow:auto;flex:none;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;">
           <div style="display:flex;align-items:baseline;gap:9px;">
-            <span style="font-size:12px;font-weight:650;">What-if — drag durations</span>
+            <span style="font-size:12px;font-weight:650;">What-if - drag durations</span>
             <span style="font-size:11px;color:var(--sub-text);">a longer chain can become critical</span>
           </div>
           <button onclick="resetDurations()" style="border:1px solid var(--border);background:transparent;cursor:pointer;font-size:11.5px;color:var(--sub-text);padding:4px 11px;border-radius:6px;">Reset</button>
@@ -113,7 +113,7 @@
     <span style="display:flex;align-items:center;gap:8px;">
       <span id="verify-dot" style="width:7px;height:7px;border-radius:50%;background:var(--warm);"></span>
       <span style="color:var(--text);font-weight:600;" id="verify-label">Verified by 2 algorithms</span>
-      <span id="verify-detail">— loading…</span>
+      <span id="verify-detail">- loading…</span>
     </span>
     <div style="flex:1;"></div>
     <div style="display:flex;align-items:center;gap:9px;">
@@ -132,7 +132,7 @@
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   ReelPath front-end — talks to the Flask backend at /solve.
+   ReelPath front-end - talks to the Flask backend at /solve.
    Core algorithms live in src/reelpath and are NOT touched.
    ═══════════════════════════════════════════════════════════ */
 
@@ -153,7 +153,7 @@ async function loadSample() {
     buildSliders();
     solve();
   } catch (e) {
-    document.getElementById('verify-detail').textContent = '— error loading sample: ' + e.message;
+    document.getElementById('verify-detail').textContent = '- error loading sample: ' + e.message;
   }
 }
 
@@ -168,7 +168,7 @@ async function solve() {
     if (data.error) throw new Error(data.message || data.error);
     render(data);
   } catch (e) {
-    document.getElementById('verify-detail').textContent = '— error: ' + e.message;
+    document.getElementById('verify-detail').textContent = '- error: ' + e.message;
   }
 }
 
@@ -227,8 +227,8 @@ function render(data) {
   // Footer verification
   const ok = data.crosscheck_ok;
   document.getElementById('verify-detail').textContent =
-    ok ? ('\u2009— both agree, makespan = ' + data.makespan + '.')
-       : '\u2009— MISMATCH!';
+    ok ? ('\u2009- both agree, makespan = ' + data.makespan + '.')
+       : '\u2009- MISMATCH!';
 
   // Footer timing bars
   const aMs = data.timing.A_ms, bMs = data.timing.B_ms;

@@ -1,4 +1,4 @@
-> # ⚠️ DRAFT — author must verify every claim and rewrite in their own words
+> # ⚠️ DRAFT - author must verify every claim and rewrite in their own words
 >
 > This report was generated as a **draft scaffold** with real, measured benchmark
 > numbers. Before submitting you **must**:
@@ -6,7 +6,7 @@
 > - [ ] Replace the title-page **names, Student IDs, class, and date** with the real ones.
 > - [ ] Add **demo screenshots** where marked `[SCREENSHOT]` in §2 (run
 >       `python app/server.py`, open http://localhost:5000, drag a slider, capture).
-> - [ ] Rewrite the prose **in your own words** — do not submit AI-generated text verbatim.
+> - [ ] Rewrite the prose **in your own words** - do not submit AI-generated text verbatim.
 > - [ ] **Re-read the correctness proof (§3.1) until you can explain it unaided**, then
 >       rephrase it yourself; the same for the complexity derivation (§3.2).
 > - [ ] Fill the **contribution table (§4)** with each member's real %/role (it must be honest).
@@ -15,16 +15,16 @@
 
 <div class="page-break"></div>
 
-# ReelPath — A Critical-Path Analyzer for Video Production Schedules
+# ReelPath - A Critical-Path Analyzer for Video Production Schedules
 
-### EF234405 — Design & Analysis of Algorithms — Final Exam (Group Capstone Project)
+### EF234405 - Design & Analysis of Algorithms - Final Exam (Group Capstone Project)
 
 **“Design It, Prove It, Build It, Measure It.”**
 
 | | |
 |---|---|
-| **Project** | ReelPath — critical-path & makespan analysis of video production pipelines |
-| **Author(s)** | _[AUTHOR: Full Name 1 — Student ID]_ · _[Full Name 2 — Student ID, if any]_ |
+| **Project** | ReelPath - critical-path & makespan analysis of video production pipelines |
+| **Author(s)** | _[AUTHOR: Full Name 1 - Student ID]_ · _[Full Name 2 - Student ID, if any]_ |
 | **Class** | _[AUTHOR: D / IUP / E / F / G]_ |
 | **Date** | _[AUTHOR: e.g., 18 June 2026]_ |
 | **Repository** | https://github.com/milhan-z/draftpaa |
@@ -36,14 +36,14 @@
 
 ### 1.1 Problem statement & motivation (D1)
 
-A video production — a short film, a YouTube upload, an advertisement — is a set
+A video production - a short film, a YouTube upload, an advertisement - is a set
 of **tasks** with **durations** and **precedence dependencies**. You cannot edit a
 scene before it is shot, cannot colour-grade before editing, cannot publish before
 rendering. A producer planning a release needs two answers:
 
 1. **The makespan:** the earliest the whole project can finish, given the
    dependencies.
-2. **The critical path:** the chain of tasks that dictates that finish time —
+2. **The critical path:** the chain of tasks that dictates that finish time -
    the tasks with *zero scheduling freedom*. Equally important is which tasks have
    **slack** and can slip without delaying the release.
 
@@ -81,7 +81,7 @@ on a maximising path form a **critical path**; per task we report
 **Why well-defined.** In a DAG every `s→t` path is finite, so the maximum is finite
 and attained. Longest path in a graph with a positive-weight cycle is unbounded
 and the decision problem is NP-hard; **acyclicity is precisely what makes the
-problem tractable** — and our generator and the node-split construction guarantee
+problem tractable** - and our generator and the node-split construction guarantee
 it, while a cyclic user instance is detected and rejected.
 
 **Worked instance.** `Shoot(5) → Edit(4)` becomes
@@ -92,20 +92,20 @@ path has weight `9`, so the makespan is `9` and the critical path is
 ### 1.3 Algorithm selection & expected trade-off (D3)
 
 Both algorithms compute a **longest `s→t` path** on the same node-split DAG, so
-they must return the **same makespan** — our correctness cross-check.
+they must return the **same makespan** - our correctness cross-check.
 
-- **Algorithm A — Topological sort + DAG longest path** (the non-trivial core).
+- **Algorithm A - Topological sort + DAG longest path** (the non-trivial core).
   Relax vertices once each in topological order; one pass suffices because every
   predecessor is finalised first. Expected cost: **linear, `O(V+E)`**.
-- **Algorithm B — Bellman–Ford on negated weights** (the baseline). Longest path =
+- **Algorithm B - Bellman–Ford on negated weights** (the baseline). Longest path =
   shortest path with weights negated; the DAG has no negative cycle, so the
-  textbook `V−1`-sweep Bellman–Ford is correct. Expected cost: **`O(V·E)`** —
+  textbook `V−1`-sweep Bellman–Ford is correct. Expected cost: **`O(V·E)`** -
   quadratic in `n` for our `m ∝ n` graphs.
 
 **Expected trade-off.** Both give the identical makespan, but A does *one* pass
 while B does `V−1` sweeps over all edges. We expect a **dramatic, visible gap** on
 the runtime-vs-size plot (linear vs. quadratic), which is the centrepiece of the
-evaluation. B is not chosen for speed — it is an *independent* method whose
+evaluation. B is not chosen for speed - it is an *independent* method whose
 agreement with A validates both implementations.
 
 ### 1.4 Data structures & architecture (D4)
@@ -146,8 +146,8 @@ factors matter.
                    (Flask + UI)             → results.csv → plot.py      (pytest)
 ```
 
-The two algorithms expose the **same interface** —
-`longest_path(graph, source) → (dist, pred)` — so `schedule.py` drives either with
+The two algorithms expose the **same interface** -
+`longest_path(graph, source) → (dist, pred)` - so `schedule.py` drives either with
 no duplicated logic.
 
 <div class="page-break"></div>
@@ -159,9 +159,9 @@ no duplicated logic.
 | Module | Responsibility |
 |---|---|
 | `graph.py` | `Graph` (adjacency list), `CycleError`, `build_split_dag()` (node-splitting) |
-| `generator.py` | seeded **layered** DAG generator — acyclic by construction |
-| `critical_path.py` | **Algorithm A** — Kahn topological sort + single-pass DAG longest path |
-| `bellman_ford.py` | **Algorithm B** — Bellman–Ford on negated weights |
+| `generator.py` | seeded **layered** DAG generator - acyclic by construction |
+| `critical_path.py` | **Algorithm A** - Kahn topological sort + single-pass DAG longest path |
+| `bellman_ford.py` | **Algorithm B** - Bellman–Ford on negated weights |
 | `schedule.py` | forward/backward passes → `ES/EF/LS/LF/slack`; shared `analyze()` |
 | `app/server.py` + `ReelPath.dc.html` | Flask demo wired to the real solver |
 | `bench/benchmark.py` + `plot.py` | size sweep → `results.csv` → log–log plots |
@@ -169,7 +169,7 @@ no duplicated logic.
 Every module has docstrings and meaningful names; there is no copy-pasted
 duplication (both algorithms share `schedule.py`) and no dead code.
 
-### 2.2 Algorithm A — core (I1)
+### 2.2 Algorithm A - core (I1)
 
 Kahn's algorithm raises `CycleError` exactly when the order cannot cover every
 vertex (a cycle starves some in-degrees); the longest-path pass then relaxes each
@@ -201,7 +201,7 @@ def longest_path(graph, source):       # shared interface
     return dist, pred
 ```
 
-### 2.3 Algorithm B — baseline (I2)
+### 2.3 Algorithm B - baseline (I2)
 
 The **unconditional** `V−1`-sweep Bellman–Ford on negated weights (no early-exit,
 so it shows its true `O(V·E)` cost), followed by a certificate pass:
@@ -273,7 +273,7 @@ clean checkout runs after `pip install -r requirements.txt` alone.
 precedence edges. Structural edges have weight `0`; only duration edges contribute,
 each adding `d(i)`. Hence the weight of an `s→t` path equals the total duration of
 the task chain it represents, and the **maximum-weight path equals the longest
-dependency chain — which is exactly the makespan** under the Critical Path Method.
+dependency chain - which is exactly the makespan** under the Critical Path Method.
 
 **Theorem (A is optimal).** On a DAG `G` with source `s`, relaxing vertices in
 topological order with max-relaxation yields, for every vertex `u`,
@@ -282,7 +282,7 @@ topological order with max-relaxation yields, for every vertex `u`,
 **Proof (induction over the topological order).**
 *Base.* `dist[s] = 0`, the weight of the empty path, which is the longest `s→s`
 path. Any vertex appearing before `s` in the order is unreachable from `s`, and
-its `dist` stays `−∞` — correct.
+its `dist` stays `−∞` - correct.
 *Inductive step.* Take a vertex `u`, and assume the claim holds for every vertex
 earlier in the topological order. Every predecessor `p` of `u` (an edge `p→u`)
 precedes `u` in a topological order, so by the inductive hypothesis `dist[p]` was
@@ -297,14 +297,14 @@ is unreachable, no predecessor has finite `dist` and `dist[u] = −∞`. ∎
 Taking `u = t` gives `dist[t] = M`, the makespan; backtracking `pred` from `t`
 recovers a maximum-weight path. **Infeasibility:** a cyclic instance has *no*
 topological order, so Kahn's algorithm cannot order all vertices and `CycleError`
-is raised — the instance is rejected rather than mis-solved.
+is raised - the instance is rejected rather than mis-solved.
 
 **Algorithm B is correct too.** After negating weights, the DAG has no negative
 cycle, so Bellman–Ford's standard guarantee applies: after `V−1` sweeps every
 shortest distance is final (any shortest path has ≤ `V−1` edges, and sweep `i`
 finalises all shortest paths of `≤ i` edges). Negating back gives the longest-path
 value, and the certificate pass confirms no edge relaxes further. Thus **A and B
-must agree on every instance** — verified empirically in §3.5.
+must agree on every instance** - verified empirically in §3.5.
 
 ### 3.2 Complexity (A2)
 
@@ -324,15 +324,15 @@ arrays and `dist`/`pred` are `O(V+E)`. **Space `O(V+E)`.**
 
 | Algorithm | Time (worst case) | Time in `n` (`m ∝ n`) | Space |
 |---|---|---|---|
-| A — topo + DAG longest path | `O(V + E)` | `O(n)` | `O(V + E)` |
-| B — Bellman–Ford (negated) | `O(V · E)` | `O(n²)` | `O(V + E)` |
+| A - topo + DAG longest path | `O(V + E)` | `O(n)` | `O(V + E)` |
+| B - Bellman–Ford (negated) | `O(V · E)` | `O(n²)` | `O(V + E)` |
 
 ### 3.3 Comparative analysis (A3)
 
 Asymptotically **A dominates B in every regime** on a DAG: a single topological
 pass versus `V−1` edge sweeps. B would only be *preferable* where its extra
-generality is actually needed — arbitrary negative weights, or negative-cycle
-detection — neither of which arises here, because node-splitting yields a
+generality is actually needed - arbitrary negative weights, or negative-cycle
+detection - neither of which arises here, because node-splitting yields a
 non-negative-weight DAG. B's role in this project is therefore an **independent
 correctness oracle**: its agreement with A on every instance validates both. For a
 producer's interactive what-if tool, A's linear cost is what makes live
@@ -340,7 +340,7 @@ recomputation feel instant even on large pipelines.
 
 ### 3.4 Experimental setup (A4)
 
-- **Machine. [AUTHOR — confirm/replace]** Windows 11, Python **3.11.9** (CPython),
+- **Machine. [AUTHOR - confirm/replace]** Windows 11, Python **3.11.9** (CPython),
   single-threaded; timings via `time.perf_counter` around the **solve only**
   (each algorithm's `longest_path`); graph construction and the shared schedule
   extraction are excluded.
@@ -359,7 +359,7 @@ recomputation feel instant even on large pipelines.
 
 <!-- RESULTS:START -->
 The full sweep produced **205 timing rows over 25 instances** (5 sizes × 5 seeds).
-**The `makespan_A == makespan_B` cross-check passed on all 25 instances** — every
+**The `makespan_A == makespan_B` cross-check passed on all 25 instances** - every
 row of `bench/results.csv` has `crosscheck_ok = 1`. Mean solve time (averaged over
 seeds and runs):
 
@@ -371,17 +371,17 @@ seeds and runs):
 | 3 000 | 6 002 | 12 111 | 6.313 | 12 907.09 | 2 045× | 706–785 |
 | 10 000 | 20 002 | 40 375 | 23.382 | 140 848.67 | 6 024× | 1 299–1 352 |
 
-*Table 1 — mean solve time per size. A is sub-millisecond to ~23 ms; B grows from
+*Table 1 - mean solve time per size. A is sub-millisecond to ~23 ms; B grows from
 ~14 ms to ~141 s. The B/A speedup itself grows with `n` (73× → 6 024×), the
 signature of a linear vs. quadratic gap.*
 
-![Algorithm A — runtime vs n (log–log)](../bench/runtime_A.png)
+![Algorithm A - runtime vs n (log–log)](../bench/runtime_A.png)
 
-![Algorithm B — runtime vs n (log–log)](../bench/runtime_B.png)
+![Algorithm B - runtime vs n (log–log)](../bench/runtime_B.png)
 
 ![A vs B overlay (log–log)](../bench/runtime_overlay.png)
 
-*Figures 1–3 — log–log runtime vs. `n`. Straight lines on log–log axes indicate
+*Figures 1–3 - log–log runtime vs. `n`. Straight lines on log–log axes indicate
 power-law growth; the fitted slope is the empirical growth exponent.*
 
 **Theory vs. practice (A5).** The least-squares slope of `log(time)` vs. `log(n)`
@@ -389,10 +389,10 @@ gives the empirical growth exponent:
 
 | Algorithm | Empirical exponent | Derived theory |
 |---|---|---|
-| A — topo + DAG longest path | **1.04** | `O(V+E) = O(n)` → exponent 1.0 |
-| B — Bellman–Ford (negated) | **2.02** | `O(V·E) = O(n²)` → exponent 2.0 |
+| A - topo + DAG longest path | **1.04** | `O(V+E) = O(n)` → exponent 1.0 |
+| B - Bellman–Ford (negated) | **2.02** | `O(V·E) = O(n²)` → exponent 2.0 |
 
-Both empirical exponents land within ~0.04 of the derived values — a tight
+Both empirical exponents land within ~0.04 of the derived values - a tight
 theory–practice match. The small excess over 1.0 for A is the expected mild effect
 of fixed per-call overhead at the smallest sizes (visible as a gentle bend at the
 low-`n` end of Figure 1). The `6 024×` measured gap at `n = 10 000` is exactly what
@@ -402,7 +402,7 @@ a linear-vs-quadratic pair predicts.
 returned the identical makespan on every one of the 25 instances** (the
 `crosscheck_ok` column is `1` throughout). Because A (topological relaxation) and B
 (Bellman–Ford on negated weights) share no path-finding code, their agreement is
-strong evidence that both implementations are correct — not merely internally
+strong evidence that both implementations are correct - not merely internally
 consistent.
 <!-- RESULTS:END -->
 
@@ -414,7 +414,7 @@ consistent.
 
 ReelPath computes the makespan, the critical path, and per-task slack of a video
 production schedule, and **two independent algorithms agree on the makespan for
-every instance tested** — a strong correctness signal. The measured runtimes match
+every instance tested** - a strong correctness signal. The measured runtimes match
 the theory closely: Algorithm A scales **linearly** and Algorithm B
 **quadratically** in `n`, exactly the `O(V+E)` vs. `O(V·E)` prediction, and the
 gap is enormous at scale (milliseconds vs. minutes at `n = 10⁴`).
@@ -431,23 +431,23 @@ gap is enormous at scale (milliseconds vs. minutes at `n = 10⁴`).
 
 ### 4.3 Future work
 
-- Resource-constrained scheduling (limited crews/edit bays) — an NP-hard variant
+- Resource-constrained scheduling (limited crews/edit bays) - an NP-hard variant
   worth an approximation/heuristic comparison (a natural **bonus** third algorithm).
 - Stochastic durations (PERT / Monte-Carlo critical-path distributions).
 - Incremental re-solve for what-if (update only the affected sub-DAG).
 
 ### 4.4 Lessons learned
 
-`[AUTHOR: write 3–5 sentences in your own voice — e.g., what surprised you about
+`[AUTHOR: write 3–5 sentences in your own voice - e.g., what surprised you about
 the A-vs-B gap, what the node-split trick taught you, what was hardest to debug.]`
 
 ### 4.5 Contribution table (C1)
 
-`[AUTHOR: replace with real members, %, and roles — they must sum to 100% and be honest.]`
+`[AUTHOR: replace with real members, %, and roles - they must sum to 100% and be honest.]`
 
 | Member | % | Role / Contribution |
 |---|---|---|
-| _[Full Name — Student ID]_ | 100% | Model & architecture; Algorithm A (core); Algorithm B (baseline); correctness proof & complexity; demo; benchmark & plots; report. |
+| _[Full Name - Student ID]_ | 100% | Model & architecture; Algorithm A (core); Algorithm B (baseline); correctness proof & complexity; demo; benchmark & plots; report. |
 
 *(Solo author = a team of one at 100%. For a team of two/three, split honestly.)*
 
@@ -456,14 +456,14 @@ the A-vs-B gap, what the node-split trick taught you, what was hardest to debug.
 ## References
 
 1. T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein. *Introduction to
-   Algorithms* (CLRS), 3rd/4th ed. — topological sort, DAG shortest/longest path,
+   Algorithms* (CLRS), 3rd/4th ed. - topological sort, DAG shortest/longest path,
    Bellman–Ford.
 2. Critical Path Method (CPM): J. E. Kelley, M. R. Walker, *Critical-Path Planning
    and Scheduling*, 1959.
 3. Libraries (support only): Flask 3.1.3, matplotlib 3.11.0, pandas 3.0.3,
    pytest 9.1.0, markdown 3.10.2. No graph library is used for the core.
 
-## Appendix A — Repository & reproduction
+## Appendix A - Repository & reproduction
 
 - Repo: https://github.com/milhan-z/draftpaa
 - Tests: `pytest -q` (41 tests).

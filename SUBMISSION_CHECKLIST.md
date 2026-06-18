@@ -1,7 +1,7 @@
-# Submission Checklist — EF234405 DAA Final Exam
+# Submission Checklist - EF234405 DAA Final Exam
 
 > ⏰ **DEADLINE: 18 June 2026, 23:59 WIB.** Late penalty **0.15% of the grade per
-> minute**. Submit early — a few minutes late is a real score loss.
+> minute**. Submit early - a few minutes late is a real score loss.
 
 This checklist mirrors §1 (Submission Guidelines) and §6 (compliance) of the
 official brief. Items marked **[AUTHOR]** require you to fill in real identity
@@ -14,7 +14,7 @@ details before sending.
 - [ ] **[AUTHOR]** Filename **exactly**:
       `EF234405_DAA_FIN_StudentID1_Name1[_StudentID2_Name2].ZIP`
       (append `_StudentID3_Name3` for a third member; use your real IDs and names,
-      no spaces inside a name field — e.g. `EF234405_DAA_FIN_5025221001_BudiSantoso.ZIP`).
+      no spaces inside a name field - e.g. `EF234405_DAA_FIN_5025221001_BudiSantoso.ZIP`).
 - [ ] The ZIP contains **exactly two files** and nothing else:
   - `Report.pdf`
   - `Declaration.pdf`
@@ -28,17 +28,17 @@ rebuild it after editing the report/declaration.
 ## 2. The email
 
 - [ ] **To:** `yifana@gmail.com`  (MM Irfan Subakti)
-- [ ] **CC** (all TAs — copy/paste this exact list):
-  - `fellyla.hyuga@gmail.com` — Fellyla Fiorenza Wilianto
-  - `putrimeyliyaalfath@gmail.com` — Putri Meyliya Rachmawati
-  - `syalbiaishere@gmail.com` — Syalbia Noor Rahmah
-  - `iffaamaliasabrina@gmail.com` — Iffa Amalia Sabrina
-  - `mrafibudip@gmail.com` — Muhammad Rafi Budi Purnama
-  - `aqilazhn05@gmail.com` — Aqila Zahira Naia Puteri Arifin
-  - `itsrhenaldy@gmail.com` — Rhenaldy Chandra
-  - `ricardo.supriyanto08@gmail.com` — Ricardo Supriyanto
-  - `amelianovasafitri@gmail.com` — Amelia Nova Safitri
-  - `thalytapramesti@gmail.com` — Thalyta Vius Pramesti
+- [ ] **CC** (all TAs - copy/paste this exact list):
+  - `fellyla.hyuga@gmail.com` - Fellyla Fiorenza Wilianto
+  - `putrimeyliyaalfath@gmail.com` - Putri Meyliya Rachmawati
+  - `syalbiaishere@gmail.com` - Syalbia Noor Rahmah
+  - `iffaamaliasabrina@gmail.com` - Iffa Amalia Sabrina
+  - `mrafibudip@gmail.com` - Muhammad Rafi Budi Purnama
+  - `aqilazhn05@gmail.com` - Aqila Zahira Naia Puteri Arifin
+  - `itsrhenaldy@gmail.com` - Rhenaldy Chandra
+  - `ricardo.supriyanto08@gmail.com` - Ricardo Supriyanto
+  - `amelianovasafitri@gmail.com` - Amelia Nova Safitri
+  - `thalytapramesti@gmail.com` - Thalyta Vius Pramesti
 - [ ] **[AUTHOR] Subject** (no `.ZIP` extension):
       `EF234405_DAA_FIN_StudentID1_Name1[_StudentID2_Name2]`
 - [ ] **Body includes the public GitHub link:**
@@ -57,7 +57,7 @@ rebuild it after editing the report/declaration.
 
 ## 4. Final sanity pass
 
-- [ ] Open `Report.pdf` and `Declaration.pdf` one last time — fonts, figures,
+- [ ] Open `Report.pdf` and `Declaration.pdf` one last time - fonts, figures,
       tables, and signatures all render correctly.
 - [ ] Re-read the correctness proof in §3 until you can explain it without notes.
 - [ ] Confirm every benchmark number in the report matches `bench/results.csv`.
