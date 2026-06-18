@@ -1,0 +1,9 @@
+# ReelPath runtime + dev dependencies.
+# The CORE algorithms (topological sort, DAG longest path, Bellman-Ford) use
+# only the Python standard library. Everything below is support only:
+# web serving for the demo, plotting/data for the benchmark, and the test runner.
+
+Flask>=3.0          # demo backend (app/server.py) -- serving/routing only
+matplotlib>=3.8     # bench/plot.py -- runtime-vs-size plots
+pandas>=2.1         # bench I/O -- reading/aggregating results.csv
+pytest>=8.0         # test runner

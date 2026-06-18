@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build / dist junk
+build/
+*.spec
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Project-local scratch / source material (not for the public repo)
+_brief_extracted.txt
+ketentuan.pdf
+README FP PAA.md
+
+# Keep benchmark results and plots in the repo so the TA can see them:
+!bench/results.csv
+!bench/*.png
