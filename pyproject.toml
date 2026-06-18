@@ -5,15 +5,22 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "reelpath"
 version = "1.0.0"
-description = "Critical-path analyzer for video production schedules (EF234405 DAA final)."
+description = "Critical-path analyzer for video production schedules."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
+authors = [
+    { name = "Muhammad Hilman Azhar" }
+]
 dependencies = [
     "Flask>=3.0",
     "matplotlib>=3.8",
     "pandas>=2.1",
 ]
+
+[project.urls]
+Homepage = "https://github.com/milhan-z/FPPAA"
+Repository = "https://github.com/milhan-z/FPPAA"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
